@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Студенты</title>
+    <style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Код</th>
+            <th>Имя</th>
+            <th>Фамилия</th>
+            <th>Очество</th>
+            <th>Учебная группа</th>
+            <th>Телефон</th>
+            <th>Страна</th>
+            <th>Город</th>
+            <th>Адрес</th>
+            <th>Пол</th>
+            <th>Компьютерные сети</th>
+            <th>Числовые методы</th>
+            <th>Математические методы</th>
+        </tr>
+        <th:block th:each="student : ${students}">
+            <tr>
+                <td th:text="${student.id}"></td>
+                <td th:text="${student.firstName}"></td>
+                <td th:text="${student.lastName}"></td>
+                <td th:text="${student.middleName}"></td>
+                <td th:text="${student.studyGroup}"></td>
+                <td th:text="${student.phone}"></td>
+                <td th:text="${student.country}"></td>
+                <td th:text="${student.city}"></td>
+                <td th:text="${student.address}"></td>
+                <td th:text="${student.gender}"></td>
+                <td th:text="${student.CNAverageScore}"></td>
+                <td th:text="${student.NMAverageScore}"></td>
+                <td th:text="${student.MMAverageScore}"></td>
+            </tr>
+        </th:block>
+    </table>
+</body>
+</html>

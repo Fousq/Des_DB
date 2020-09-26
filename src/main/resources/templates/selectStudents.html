@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select students</title>
+    <style>
+        table {
+    border: 1px black solid;
+    margin-bottom: 50px;
+}
+
+th {
+    background-color: #d4d4d4;
+}
+
+.moveLink {
+    text-decoration: none;
+    padding: 10px;
+    background-color: #3480fa;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+}
+
+.next {
+    margin-left: 20px;
+}
+
+.enabled {
+    pointer-events: visible;
+}
+
+.disabled {
+    cursor: not-allowed;
+    background-color: #a8a8a8;
+    color: black;
+}
+
+.disabled:active {
+    pointer-events: none;
+}
+
+.enabled:hover {
+    opacity: 0.6;
+}
+
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Код</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Очество</th>
+        <th>Учебная группа</th>
+        <th>Телефон</th>
+        <th>Страна</th>
+        <th>Город</th>
+        <th>Адрес</th>
+        <th>Пол</th>
+        <th>Компьютерные сети</th>
+        <th>Числовые методы</th>
+        <th>Математические методы</th>
+    </tr>
+    <tr>
+        <td th:text="${student.id}"></td>
+        <td th:text="${student.firstName}"></td>
+        <td th:text="${student.lastName}"></td>
+        <td th:text="${student.middleName}"></td>
+        <td th:text="${student.studyGroup}"></td>
+        <td th:text="${student.phone}"></td>
+        <td th:text="${student.country}"></td>
+        <td th:text="${student.city}"></td>
+        <td th:text="${student.address}"></td>
+        <td th:text="${student.gender}"></td>
+        <td th:text="${student.CNAverageScore}"></td>
+        <td th:text="${student.NMAverageScore}"></td>
+        <td th:text="${student.MMAverageScore}"></td>
+    </tr>
+</table>
+<div class="moveLinks">
+    <a th:href="@{/select(position=${previous})}" class="moveLink previous" th:classappend="${isFirst} ? disabled : enabled">PREVIOUS</a>
+    <a th:href="@{/select(position=${next})}" class="moveLink next" th:classappend="${isLast} ? disabled : enabled">NEXT</a>
+</div>
+</body>
+</html>

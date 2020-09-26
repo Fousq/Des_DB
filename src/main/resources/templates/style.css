@@ -1,0 +1,39 @@
+table {
+    border: 1px black solid;
+    margin-bottom: 50px;
+}
+
+th {
+    background-color: #d4d4d4;
+}
+
+.moveLink {
+    text-decoration: none;
+    padding: 10px;
+    background-color: #3480fa;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+}
+
+.next {
+    margin-left: 20px;
+}
+
+.enabled {
+    pointer-events: visible;
+}
+
+.disabled {
+    cursor: not-allowed;
+    background-color: #a8a8a8;
+    color: black;
+}
+
+.disabled:active {
+    pointer-events: none;
+}
+
+.enabled:hover {
+    opacity: 0.6;
+}
