@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Обновиление Студента</title>
+</head>
+<body>
+    <form th:action="@{/update/student}" method="POST" th:object="${student}">
+        <input type="hidden" th:field="*{id}">
+
+        <div class="firstName">
+            <label for="firstName">Имя:</label>
+            <input id="firstName" type="text" th:field="*{firstName}" required>
+        </div>
+
+        <div class="lastName">
+            <label for="lastName">Фамилия:</label>
+            <input id="lastName" type="text" th:field="*{lastName}" required>
+        </div>
+
+        <div class="middleName">
+            <label for="middleName">Отчество:</label>
+            <input id="middleName" type="text" th:field="*{middleName}" required>
+        </div>
+
+        <div class="studyGroup">
+            <label for="studyGroup">Группа:</label>
+            <input id="studyGroup" type="text" th:field="*{studyGroup}" required>
+        </div>
+
+        <div class="phone">
+            <label for="phone">Телефон:</label>
+            <input id="phone" type="text" th:field="*{phone}" required>
+        </div>
+
+        <div class="country">
+            <label for="country">Страна:</label>
+            <input id="country" type="text" th:field="*{country}" required>
+        </div>
+
+
+        <div class="city">
+            <label for="city">Город:</label>
+            <input id="city" type="text" th:field="*{city}" required>
+        </div>
+
+        <div class="address">
+            <label for="address">Адрес:</label>
+            <input id="address" type="text" th:field="*{address}" required>
+        </div>
+
+        <!-- TODO: fix this
+        <div class="birthday">
+            <label for="birthday">Дата рождения:</label>
+            <input id="birthday" type="date" th:field="*{birthday}">
+        </div> -->
+
+        <div class="gender">
+            <label for="gender">Пол:</label>
+            <select name="gender" id="gender">
+                <option value="M" th:selected="${student.gender  == 'Мужчина'}">Мужчина</option>
+                <option value="F" th:selected="${student.gender  == 'Женщина'}">Женщина</option>
+            </select>
+        </div>
+
+        <button type="submit">Обновить</button>
+    </form>
+</body>
+</html>
