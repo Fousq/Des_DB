@@ -61,4 +61,16 @@ public class StudentController {
         studentRepository.update(studentUpdate);
         return "redirect:/update";
     }
+
+    @GetMapping("/delete")
+    public String deleteStudents(Model model) {
+        model.addAttribute("students", studentRepository.getStudents());
+        return "deleteStudentsTable";
+    }
+
+    @GetMapping("/delete/student/{studentId}")
+    public String deleteStudent(@PathVariable("studentId") Long studentId) {
+        studentRepository.delete(studentId);
+        return "redirect:/delete";
+    }
 }

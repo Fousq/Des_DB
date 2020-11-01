@@ -49,6 +49,9 @@ public class StudentRepository {
             "country = :studentCountry, city = :studentCity, address = :studentAddress, " +
             "gender = :studentGender " +
             "WHERE student_id = :studentId";
+    private static final String DELETE_STUDENT_SCORES = "DELETE FROM studentscore WHERE student_id = :studentId";
+    private static final String DELETE_STUDENT_INFO = "DELETE FROM studentinfo WHERE student_id = :studentId";
+    private static final String DELETE_STUDENT = "DELETE FROM student WHERE id = :studentId";
     private StudentRowMapper studentRowMapper;
     private JdbcTemplate jdbcTemplate;
     private NamedParameterJdbcTemplate parameterJdbcTemplate;
@@ -89,5 +92,14 @@ public class StudentRepository {
         parameters.addValue("studentGender", Objects.equals(student.getGender(), "M"));
         parameterJdbcTemplate.update(UPDATE_STUDENT_QUERY, parameters);
         parameterJdbcTemplate.update(UPDATE_STUDENT_INFO_QUERY, parameters);
+    }
+
+    @Transactional
+    public void delete(Long studentId) {
+        MapSqlParameterSource parameters = new MapSqlParameterSource();
+        parameters.addValue("studentId", studentId);
+        parameterJdbcTemplate.update(DELETE_STUDENT_SCORES, parameters);
+        parameterJdbcTemplate.update(DELETE_STUDENT_INFO, parameters);
+        parameterJdbcTemplate.update(DELETE_STUDENT, parameters);
     }
 }
