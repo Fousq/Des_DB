@@ -19,9 +19,38 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+nav {
+    display: flex;
+    flex-direction: column;
+}
+
+nav a {
+    padding: 10px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+}
+
+nav a:hover {
+    background-color: white;
+    color: black;
+}
 </style>
 </head>
 <body>
+    <nav>
+        <a th:href="@{/}">No filtering</a>
+        <a th:href="@{/?filterSetId=1&maleSelected=true}">Filter by male</a>
+        <a th:href="@{/?filterSetId=1&maleSelected=false}">Filter by female</a>
+        <a th:href="@{/?filterSetId=2&asc=true}">Sort by first name and last name, Ascending</a>
+        <a th:href="@{/?filterSetId=2&asc=false}">Sort by first name and last name, Descending</a>
+        <a th:href="@{/?filterSetId=3&maleSelected=true&asc=true}">Filter by male. Sort by first name and last name, Ascending</a>
+        <a th:href="@{/?filterSetId=3&maleSelected=true&asc=false}">Filter by male. Sort by first name and last name, Descending</a>
+        <a th:href="@{/?filterSetId=3&maleSelected=false&asc=true}">Filter by female. Sort by first name and last name, Ascending</a>
+        <a th:href="@{/?filterSetId=3&maleSelected=false&asc=true}">Filter by female. Sort by first name and last name, Descending</a>
+    </nav>
     <table>
         <tr>
             <th>Код</th>

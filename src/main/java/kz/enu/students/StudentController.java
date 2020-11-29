@@ -8,8 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
-
 @RequestMapping("/")
 @Controller
 public class StudentController {
@@ -18,9 +16,12 @@ public class StudentController {
     @Autowired
     private StudentSqlRowSetMapper studentSqlRowSetMapper;
 
+    // modify to get filtered or sorted list
     @GetMapping
-    public String students(Model model) {
-        model.addAttribute("students", studentRepository.getStudents());
+    public String students(Model model, @RequestParam(name = "filterSetId", defaultValue = "0") Integer filterSetId,
+                           @RequestParam(name = "maleSelected", required = false) Boolean isMaleSelected,
+                           @RequestParam(name = "asc", required = false) Boolean asc) {
+        model.addAttribute("students", studentRepository.getStudents(filterSetId, isMaleSelected, asc));
         return "index";
     }
 
@@ -45,7 +46,7 @@ public class StudentController {
 
     @GetMapping("/update")
     public String updateStudents(Model model) {
-        model.addAttribute("students", studentRepository.getStudents());
+        model.addAttribute("students", studentRepository.getStudents(FilterSetType.NO_FILTER.getId(), true, true));
         return "updateStudentsTable";
     }
 
@@ -64,7 +65,7 @@ public class StudentController {
 
     @GetMapping("/delete")
     public String deleteStudents(Model model) {
-        model.addAttribute("students", studentRepository.getStudents());
+        model.addAttribute("students", studentRepository.getStudents(FilterSetType.NO_FILTER.getId(), true, true));
         return "deleteStudentsTable";
     }
 
